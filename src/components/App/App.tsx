@@ -9,7 +9,7 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React Typescript</h1>
+          <h2>PicVisor</h2>
         </header>
         <Cards />
       </div>

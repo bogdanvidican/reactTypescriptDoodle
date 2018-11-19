@@ -1,35 +1,56 @@
-// import { WithStyles, createStyles } from '@material- ui/core';
-import Button from '@material-ui/core/Button';
-// import { Theme } from '@material-ui/core/styles/createMuiTheme';
 import * as React from 'react';
+import { withStyles, createStyles } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Picture from '../Cards';
 
-// const styles =  (theme: Theme) => createStyles({
-//     button: {
-//         margin: '20px'
-//     }
-// })
+const styles = createStyles({
+  image: {
+    display: 'block',
+    margin: '20px auto'
+  },
+  buttons: {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    marginBottom: '20px',
+  },
+});
 
-// interface IProps extends WithStyles<typeof styles> {
 export interface IProps {
-    url: string,
-    rating: boolean,
-  }
-
-
-function Card({ url, rating }: IProps) {
-    return(
-        <>
-            <p>Card goes here</p>
-            <Button
-                variant="outlined"
-                color="primary"
-            >Up</Button>
-            <Button
-                variant="outlined"
-                color="secondary"
-            >Down</Button> 
-        </>
-    )
+  picture: Picture,
+  skip: () => void,
+  ratePicture: (rating: boolean, id: number) => void,
 }
 
-export default Card;
+function Card({ picture: { id, title, url }, skip, ratePicture }: IProps) {
+  return(
+    <div>
+      <img src={url} style={styles.image}/>
+      <h5>{title}</h5>
+      <div style={styles.buttons}>
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => ratePicture(true, id)}
+        >
+          Like
+        </Button>
+        <Button
+          variant="outlined"
+          color="secondary"
+          onClick={() => ratePicture(false, id)}
+        >
+          Dislike
+        </Button> 
+        <Button
+          variant="outlined"
+          color="default"
+          onClick={skip}
+        >
+          Skip
+        </Button>
+      </div>
+    </div>
+  )
+}
+
+export default withStyles(styles)(Card);
