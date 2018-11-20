@@ -8,6 +8,10 @@ const styles = createStyles({
     display: 'block',
     margin: '20px auto'
   },
+  cont: {
+    width: '400px',
+    margin: '0 auto',
+  },
   buttons: {
     display: 'flex',
     justifyContent: 'space-evenly',
@@ -23,7 +27,7 @@ export interface IProps {
 
 function Card({ picture: { id, title, url }, skip, ratePicture }: IProps) {
   return(
-    <div>
+    <div style={styles.cont}>
       <img src={url} style={styles.image}/>
       <h5>{title}</h5>
       <div style={styles.buttons}>

@@ -1,7 +1,9 @@
 import * as React from 'react';
-import Card from '../Card/Card';
+import Card from '../Card';
+import Summary from '../Summary';
 import fetchPictures from '../../utils/fetchPictures';
 import Button from '@material-ui/core/Button';
+import { areAllRated, /* getNextPicture */ } from '../../utils';
 
 export interface Picture {
   id: number,
@@ -14,6 +16,7 @@ interface State {
   loading: boolean,
   currentPicture: number,
   pictures: Picture[],
+  allRated: boolean,
 }
 
 class Cards extends React.Component<null, State> {
@@ -23,6 +26,7 @@ class Cards extends React.Component<null, State> {
       loading: true,
       currentPicture: 0,
       pictures: [],
+      allRated: false,
 
     }
   }
@@ -32,13 +36,7 @@ class Cards extends React.Component<null, State> {
       .then(pictures => this.setState({
         pictures,
         loading: false,
-      }, () => console.log(this.state)));
-  }
-
-  // move to different file
-  getNextPicture = (currentPicture: number, limit: number) => {
-    const nextPicture = currentPicture + 1;
-    return (nextPicture > limit) ? 0 : nextPicture;
+      }));
   }
 
   restart = () => {
@@ -55,43 +53,39 @@ class Cards extends React.Component<null, State> {
     const { currentPicture, pictures } = this.state;
     const limit = pictures.length - 1;
     this.setState({
-      currentPicture: this.getNextPicture(currentPicture, limit),
+      // currentPicture: getNextPicture(currentPicture, limit),
+      currentPicture: currentPicture === limit ? limit : currentPicture + 1,
+      allRated: currentPicture === limit ? areAllRated(pictures) : false
+
     });
   }
 
   ratePicture = (rating: boolean, id: number) => {
-    console.log(id);
     const { pictures } = this.state;
-    const otherPics = pictures.filter(pic => {
-      return pic.id !== id
-    });
-
-    let ratedPic = pictures.find(pic => { 
-      return pic.id === id 
-    });
-
-    const newRatedPic = ratedPic ? { ...ratedPic, liked: rating } : { id: 0, url: '', title: '', liked: null }
-    console.log(ratedPic);
-    console.log('ratedPic :', ratedPic);
     this.setState(
       {
-        pictures: [
-          ...otherPics,
-          newRatedPic
-        ],
+        pictures: pictures.map(pic => { 
+          if (pic.id === id) {
+            pic.liked = rating
+          }
+          return pic;
+        }),
       },
       () => {
         this.skip()
-        console.log(this.state);
       }
     );
   }
 
   render() {
-    if (this.state.loading) {
+    const { loading, allRated, pictures } = this.state;
+    if (loading) {
       return <p>Loading...</p>
     }
-    const { pictures, currentPicture } = this.state;
+    if (allRated) {
+      return <Summary pictures={pictures}/>
+    }
+    const { currentPicture } = this.state;
     return (
       <div>
         <Button
