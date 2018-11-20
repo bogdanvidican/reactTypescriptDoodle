@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Card from '../Card';
 import Summary from '../Summary';
-import fetchPictures from '../../utils/fetchPictures';
+import { fetchPictures } from '../../utils/fetchPictures';
 import Button from '@material-ui/core/Button';
-import { areAllRated, /* getNextPicture */ } from '../../utils';
+import { areAllRated } from '../../utils';
 
 export interface Picture {
   id: number,
@@ -24,27 +24,39 @@ class Cards extends React.Component<null, State> {
     super(null);
     this.state = {
       loading: true,
-      currentPicture: 0,
+      currentPicture: -1,
       pictures: [],
       allRated: false,
-
     }
   }
 
   componentWillMount() {
+    this.init();
+  }
+
+  init = () => {
     fetchPictures()
       .then(pictures => this.setState({
         pictures,
         loading: false,
+        currentPicture: 0,
+        allRated: false,
       }));
   }
 
   restart = () => {
+    this.setState(
+      { loading: true },
+      this.init
+    );
+  }
+
+  reset = () => {
     this.setState({
       loading: false,
       currentPicture: 0,
       pictures: this.state.pictures.map(
-        pic => ({ ...pic, liked: false })
+        pic => ({ ...pic, liked: null })
       )
     })
   }
@@ -52,11 +64,18 @@ class Cards extends React.Component<null, State> {
   skip = () => {
     const { currentPicture, pictures } = this.state;
     const limit = pictures.length - 1;
+    let allRated = null;
+    let nextPic = null;
+    if (currentPicture === limit) {
+      allRated = areAllRated(pictures);
+      nextPic = allRated ? limit : 0;
+    } else {
+      allRated = false;
+      nextPic = currentPicture + 1
+    }
     this.setState({
-      // currentPicture: getNextPicture(currentPicture, limit),
-      currentPicture: currentPicture === limit ? limit : currentPicture + 1,
-      allRated: currentPicture === limit ? areAllRated(pictures) : false
-
+      currentPicture: nextPic,
+      allRated,
     });
   }
 
@@ -71,29 +90,26 @@ class Cards extends React.Component<null, State> {
           return pic;
         }),
       },
-      () => {
-        this.skip()
-      }
+      this.skip
     );
   }
 
   render() {
     const { loading, allRated, pictures } = this.state;
     if (loading) {
-      return <p>Loading...</p>
+      return <div>Loading...</div>
     }
     if (allRated) {
-      return <Summary pictures={pictures}/>
+      return <Summary pictures={pictures} restart={this.restart} />
     }
     const { currentPicture } = this.state;
     return (
       <div>
         <Button
-          style={{ marginTop: '20px' }}
           variant="outlined"
           color="secondary"
-          onClick={this.restart}
-        >Restart</Button>
+          onClick={this.reset}
+        >Reset</Button>
         <Card
           picture={pictures.find(pic => pic.id === currentPicture)}
           skip={this.skip}
