@@ -1,8 +1,9 @@
 import * as React from 'react';
-import Picture from '../Cards';
+import PictureWithThumb from '../Summary';
+
 interface Props {
   type: string,
-  pictures: Picture[],
+  pictures: PictureWithThumb[],
 }
 
 const RatedPics = ({ type, pictures }: Props) => (
@@ -11,18 +12,12 @@ const RatedPics = ({ type, pictures }: Props) => (
     {pictures.map((pic, i) => (
       <div
         key={`picture_${type}_${i}`}
-        style={{ textAlign: 'left', marginLeft: '20px' }}
+        style={{ textAlign: 'left', marginLeft: '20px', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}
       >
-        <div>Id: {pic.id}</div>
-        <div>Title: {pic.title}</div>
-        {/* <div>URL: {pic.url}</div> */}
-        <div
-          style={{
-            backgroundImage:`url(${pic.url})`,
-            height: '50px',
-            width: '50px'
-          }}
-        />
+        <span><img src={pic.thumb} /></span>
+        <span
+          style={{ marginLeft: '20px' }}
+        >Title: {pic.title}</span>
         <br />
       </div>
     ))}

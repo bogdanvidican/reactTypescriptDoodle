@@ -8,10 +8,18 @@ interface Props {
   restart: () => void,
 }
 
-const Summary = ({ pictures, restart }: Props) => {
+const KEYS = {
+  RATING: 'rating',
+  SKIPPED: 'skipped',
+}
 
-  const getRatedPics = (liked: boolean) => {
-    return pictures.filter(pic => pic.liked === liked)
+export interface PictureWithThumb extends Picture {
+  thumb: string,
+}
+
+const Summary = ({ pictures, restart }: Props) => {
+  const getPics = (key: string, value: boolean) => {
+    return pictures.filter((pic: Picture) => pic[key] === value)
   }
 
   return (
@@ -23,8 +31,9 @@ const Summary = ({ pictures, restart }: Props) => {
       >
         Restart
       </Button>
-      <RatedPics type="liked" pictures={getRatedPics(true)} />
-      <RatedPics type="disliked" pictures={getRatedPics(false)} />
+      <RatedPics type="liked" pictures={getPics(KEYS.RATING, true)} />
+      <RatedPics type="disliked" pictures={getPics(KEYS.RATING, false)} />
+      <RatedPics type="skipped" pictures={getPics(KEYS.SKIPPED, true)} />
     </div>
   )
 }

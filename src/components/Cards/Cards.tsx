@@ -3,30 +3,30 @@ import Card from '../Card';
 import Summary from '../Summary';
 import { fetchPictures } from '../../utils/fetchPictures';
 import Button from '@material-ui/core/Button';
-import { areAllRated } from '../../utils';
 
 export interface Picture {
   id: number,
   title: string,
   url: string,
-  liked: boolean | null,
+  rating: boolean | null,
+  skipped: boolean | null,
 }
+
+interface Props {}
 
 interface State {
   loading: boolean,
   currentPicture: number,
   pictures: Picture[],
-  allRated: boolean,
 }
 
-class Cards extends React.Component<null, State> {
-  constructor() {
-    super(null);
+class Cards extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
     this.state = {
       loading: true,
       currentPicture: -1,
       pictures: [],
-      allRated: false,
     }
   }
 
@@ -40,7 +40,6 @@ class Cards extends React.Component<null, State> {
         pictures,
         loading: false,
         currentPicture: 0,
-        allRated: false,
       }));
   }
 
@@ -56,27 +55,31 @@ class Cards extends React.Component<null, State> {
       loading: false,
       currentPicture: 0,
       pictures: this.state.pictures.map(
-        pic => ({ ...pic, liked: null })
+        pic => ({ ...pic, rating: null, skipped: null })
       )
     })
   }
 
-  skip = () => {
+  next = () => {
     const { currentPicture, pictures } = this.state;
     const limit = pictures.length - 1;
-    let allRated = null;
-    let nextPic = null;
-    if (currentPicture === limit) {
-      allRated = areAllRated(pictures);
-      nextPic = allRated ? limit : 0;
-    } else {
-      allRated = false;
-      nextPic = currentPicture + 1
-    }
     this.setState({
-      currentPicture: nextPic,
-      allRated,
+      currentPicture: currentPicture === limit ? limit : currentPicture + 1
     });
+  }
+
+  skip = () => {
+    const { currentPicture } = this.state;
+    this.setState({
+      pictures: this.state.pictures.map(
+        (pic: Picture): Picture => {
+          if (pic.id === currentPicture) {
+            return { ...pic, skipped: true };
+          }
+          return pic;
+        }
+      )
+    }, this.next);
   }
 
   ratePicture = (rating: boolean, id: number) => {
@@ -85,24 +88,23 @@ class Cards extends React.Component<null, State> {
       {
         pictures: pictures.map(pic => { 
           if (pic.id === id) {
-            pic.liked = rating
+            pic.rating = rating
           }
           return pic;
         }),
       },
-      this.skip
+      this.next
     );
   }
 
   render() {
-    const { loading, allRated, pictures } = this.state;
+    const { loading, currentPicture, pictures } = this.state;
     if (loading) {
       return <div>Loading...</div>
     }
-    if (allRated) {
+    if (currentPicture === (pictures.length - 1)) {
       return <Summary pictures={pictures} restart={this.restart} />
     }
-    const { currentPicture } = this.state;
     return (
       <div>
         <Button
