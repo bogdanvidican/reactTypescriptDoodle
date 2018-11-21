@@ -8,7 +8,7 @@ const RANGE = {
 }
 
 const PICSUM_RANDOM_URL = 'https://picsum.photos/400/600/?random';
-const PICSUM_THUMB_URL = 'https://picsum.photos/50/?image=';
+const PICSUM_THUMB_URL = 'https://picsum.photos/200/?image=';
 
 export async function fetchPictures(): Promise<Picture> {
   const numberOfPictures = randomIntFromInterval();

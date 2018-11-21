@@ -1,16 +1,17 @@
 import * as React from 'react';
-import ImageCard from '../Card';
+import ImageCard from '../ImageCard';
 import Summary from '../Summary';
 import { fetchPictures } from '../../utils/fetchPictures';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-export interface Picture {
+export interface IPicture {
   id: number,
   title: string,
   url: string,
   rating: boolean | null,
   skipped: boolean | null,
+  thumb?: string,
 }
 
 interface Props {}
@@ -18,7 +19,7 @@ interface Props {}
 interface State {
   loading: boolean,
   currentPicIndex: number,
-  pictures: Picture[],
+  pictures: IPicture[],
 }
 
 class Cards extends React.Component<Props, State> {
@@ -73,7 +74,7 @@ class Cards extends React.Component<Props, State> {
     const { currentPicIndex } = this.state;
     this.setState({
       pictures: this.state.pictures.map(
-        (pic: Picture): Picture => {
+        (pic: IPicture): IPicture => {
           if (pic.id === currentPicIndex) {
             return { ...pic, skipped: true };
           }
@@ -102,7 +103,7 @@ class Cards extends React.Component<Props, State> {
     const { loading, currentPicIndex, pictures } = this.state;
     const currPic = pictures[currentPicIndex];
     if (loading) {
-      return <CircularProgress color="primary" />
+      return <CircularProgress color="secondary" />
     }
     if (
         currentPicIndex === (pictures.length - 1) &&

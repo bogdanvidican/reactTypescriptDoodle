@@ -1,10 +1,10 @@
 import * as React from 'react';
-import Picture from '../Cards';
-import RatedPics from '../RatedPics';
+import IPicture from '../Cards';
+import PicGrid from '../PicGrid';
 import Button from '@material-ui/core/Button';
 
-interface Props {
-  pictures: Picture[],
+interface IProps {
+  pictures: IPicture[],
   restart: () => void,
 }
 
@@ -13,14 +13,14 @@ const KEYS = {
   SKIPPED: 'skipped',
 }
 
-export interface PictureWithThumb extends Picture {
-  thumb: string,
-}
-
-const Summary = ({ pictures, restart }: Props) => {
+const Summary = ({ pictures, restart }: IProps) => {
   const getPics = (key: string, value: boolean) => {
-    return pictures.filter((pic: Picture) => pic[key] === value)
+    return pictures.filter((pic: IPicture) => pic[key] === value)
   }
+
+  const likedPics = getPics(KEYS.RATING, true)
+  const disLikedPics = getPics(KEYS.RATING, false)
+  const skippedPics = getPics(KEYS.SKIPPED, true)
 
   return (
     <div>
@@ -31,9 +31,9 @@ const Summary = ({ pictures, restart }: Props) => {
       >
         Restart
       </Button>
-      <RatedPics type="liked" pictures={getPics(KEYS.RATING, true)} />
-      <RatedPics type="disliked" pictures={getPics(KEYS.RATING, false)} />
-      <RatedPics type="skipped" pictures={getPics(KEYS.SKIPPED, true)} />
+      {!!(likedPics.length) && <PicGrid type="liked" pictures={likedPics} />}
+      {!!(disLikedPics.length) && <PicGrid type="disliked" pictures={disLikedPics} />}
+      {!!(skippedPics.length) && <PicGrid type="skipped" pictures={skippedPics} />}
     </div>
   )
 }
