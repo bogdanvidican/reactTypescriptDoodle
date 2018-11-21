@@ -3,8 +3,8 @@ import Picture from '../components/Cards';
 import PictureWithThumb from '../components/Summary';
 
 const RANGE = {
-  MIN: 4,
-  MAX: 10,
+  MIN: 3,
+  MAX: 4,
 }
 
 const PICSUM_RANDOM_URL = 'https://picsum.photos/400/600/?random';
@@ -28,7 +28,8 @@ async function getPictures(picLimit: number): Promise<Picture> {
       id: i,
       title: chance.sentence({ words: 3 }),
       url: response.url,
-      liked: null,
+      rating: null,
+      skipped: null,
     })
   }
   return pictures;
