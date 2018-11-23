@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -39,19 +38,17 @@ export interface IProps {
 function ImageCard({ picture: {id, title, url}, skip, ratePicture, classes }: IProps) {
   return(
     <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          className={classes.media}
-          image={url}
-          title={title}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5">
-            {title}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+      <CardMedia
+        component="img"
+        className={classes.media}
+        image={url}
+        title={title}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5">
+          {title}
+        </Typography>
+      </CardContent>
       <CardActions className={classes.buttons}>
         <Button
           variant="outlined"

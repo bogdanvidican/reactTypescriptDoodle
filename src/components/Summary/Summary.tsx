@@ -1,6 +1,6 @@
 import * as React from 'react';
 import IPicture from '../Cards';
-import PicGrid from '../PicGrid';
+import { PicGrid } from '../PicGrid';
 import Button from '@material-ui/core/Button';
 
 interface IProps {

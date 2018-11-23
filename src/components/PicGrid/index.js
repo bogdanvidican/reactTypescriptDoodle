@@ -1,1 +1,1 @@
-export { default } from './PicGrid.tsx';
+export * from './PicGrid';

@@ -1,0 +1,453 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PicGrid /> should render correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Unknown
+    classes={
+        Object {
+            "gridList": "gridList",
+            "root": "root",
+            "title": "title",
+          }
+    }
+    pictures={
+        Array [
+            Object {
+              "thumb": "https://some.test.thumb_1",
+              "title": "some test title_1",
+              "url": "https://some.test.url_1",
+            },
+            Object {
+              "thumb": "https://some.test.thumb_1",
+              "title": "some test title_1",
+              "url": "https://some.test.url_1",
+            },
+            Object {
+              "thumb": "https://some.test.thumb_2",
+              "title": "some test title_2",
+              "url": "https://some.test.url_2",
+            },
+            Object {
+              "thumb": "https://some.test.thumb_3",
+              "title": "some test title_3",
+              "url": "https://some.test.url_3",
+            },
+            Object {
+              "thumb": "https://some.test.thumb_4",
+              "title": "some test title_4",
+              "url": "https://some.test.url_4",
+            },
+          ]
+    }
+    type="liked"
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <WithStyles(GridList)
+        cellHeight={200}
+        className="gridList"
+>
+        <WithStyles(GridListTile)
+                cols={2}
+                style={
+                        Object {
+                                "height": "auto",
+                              }
+                }
+        >
+                <WithStyles(ListSubheader)
+                        component="div"
+                >
+                        LIKED
+                </WithStyles(ListSubheader)>
+        </WithStyles(GridListTile)>
+        <WithStyles(Component)
+                thumb="https://some.test.thumb_1"
+                title="some test title_1"
+        />
+        <WithStyles(Component)
+                thumb="https://some.test.thumb_1"
+                title="some test title_1"
+        />
+        <WithStyles(Component)
+                thumb="https://some.test.thumb_2"
+                title="some test title_2"
+        />
+        <WithStyles(Component)
+                thumb="https://some.test.thumb_3"
+                title="some test title_3"
+        />
+        <WithStyles(Component)
+                thumb="https://some.test.thumb_4"
+                title="some test title_4"
+        />
+</WithStyles(GridList)>,
+      "className": "root",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "cellHeight": 200,
+        "children": Array [
+          <WithStyles(GridListTile)
+            cols={2}
+            style={
+                        Object {
+                                    "height": "auto",
+                                  }
+            }
+>
+            <WithStyles(ListSubheader)
+                        component="div"
+            >
+                        LIKED
+            </WithStyles(ListSubheader)>
+</WithStyles(GridListTile)>,
+          Array [
+            <WithStyles(Component)
+              thumb="https://some.test.thumb_1"
+              title="some test title_1"
+/>,
+            <WithStyles(Component)
+              thumb="https://some.test.thumb_1"
+              title="some test title_1"
+/>,
+            <WithStyles(Component)
+              thumb="https://some.test.thumb_2"
+              title="some test title_2"
+/>,
+            <WithStyles(Component)
+              thumb="https://some.test.thumb_3"
+              title="some test title_3"
+/>,
+            <WithStyles(Component)
+              thumb="https://some.test.thumb_4"
+              title="some test title_4"
+/>,
+          ],
+        ],
+        "className": "gridList",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <WithStyles(ListSubheader)
+              component="div"
+>
+              LIKED
+</WithStyles(ListSubheader)>,
+            "cols": 2,
+            "style": Object {
+              "height": "auto",
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "LIKED",
+              "component": "div",
+            },
+            "ref": null,
+            "rendered": "LIKED",
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "https://some.test.thumb_1",
+          "nodeType": "class",
+          "props": Object {
+            "thumb": "https://some.test.thumb_1",
+            "title": "some test title_1",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "https://some.test.thumb_1",
+          "nodeType": "class",
+          "props": Object {
+            "thumb": "https://some.test.thumb_1",
+            "title": "some test title_1",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "https://some.test.thumb_2",
+          "nodeType": "class",
+          "props": Object {
+            "thumb": "https://some.test.thumb_2",
+            "title": "some test title_2",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "https://some.test.thumb_3",
+          "nodeType": "class",
+          "props": Object {
+            "thumb": "https://some.test.thumb_3",
+            "title": "some test title_3",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "https://some.test.thumb_4",
+          "nodeType": "class",
+          "props": Object {
+            "thumb": "https://some.test.thumb_4",
+            "title": "some test title_4",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <WithStyles(GridList)
+          cellHeight={200}
+          className="gridList"
+>
+          <WithStyles(GridListTile)
+                    cols={2}
+                    style={
+                              Object {
+                                        "height": "auto",
+                                      }
+                    }
+          >
+                    <WithStyles(ListSubheader)
+                              component="div"
+                    >
+                              LIKED
+                    </WithStyles(ListSubheader)>
+          </WithStyles(GridListTile)>
+          <WithStyles(Component)
+                    thumb="https://some.test.thumb_1"
+                    title="some test title_1"
+          />
+          <WithStyles(Component)
+                    thumb="https://some.test.thumb_1"
+                    title="some test title_1"
+          />
+          <WithStyles(Component)
+                    thumb="https://some.test.thumb_2"
+                    title="some test title_2"
+          />
+          <WithStyles(Component)
+                    thumb="https://some.test.thumb_3"
+                    title="some test title_3"
+          />
+          <WithStyles(Component)
+                    thumb="https://some.test.thumb_4"
+                    title="some test title_4"
+          />
+</WithStyles(GridList)>,
+        "className": "root",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "cellHeight": 200,
+          "children": Array [
+            <WithStyles(GridListTile)
+              cols={2}
+              style={
+                            Object {
+                                          "height": "auto",
+                                        }
+              }
+>
+              <WithStyles(ListSubheader)
+                            component="div"
+              >
+                            LIKED
+              </WithStyles(ListSubheader)>
+</WithStyles(GridListTile)>,
+            Array [
+              <WithStyles(Component)
+                thumb="https://some.test.thumb_1"
+                title="some test title_1"
+/>,
+              <WithStyles(Component)
+                thumb="https://some.test.thumb_1"
+                title="some test title_1"
+/>,
+              <WithStyles(Component)
+                thumb="https://some.test.thumb_2"
+                title="some test title_2"
+/>,
+              <WithStyles(Component)
+                thumb="https://some.test.thumb_3"
+                title="some test title_3"
+/>,
+              <WithStyles(Component)
+                thumb="https://some.test.thumb_4"
+                title="some test title_4"
+/>,
+            ],
+          ],
+          "className": "gridList",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(ListSubheader)
+                component="div"
+>
+                LIKED
+</WithStyles(ListSubheader)>,
+              "cols": 2,
+              "style": Object {
+                "height": "auto",
+              },
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "LIKED",
+                "component": "div",
+              },
+              "ref": null,
+              "rendered": "LIKED",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "https://some.test.thumb_1",
+            "nodeType": "class",
+            "props": Object {
+              "thumb": "https://some.test.thumb_1",
+              "title": "some test title_1",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "https://some.test.thumb_1",
+            "nodeType": "class",
+            "props": Object {
+              "thumb": "https://some.test.thumb_1",
+              "title": "some test title_1",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "https://some.test.thumb_2",
+            "nodeType": "class",
+            "props": Object {
+              "thumb": "https://some.test.thumb_2",
+              "title": "some test title_2",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "https://some.test.thumb_3",
+            "nodeType": "class",
+            "props": Object {
+              "thumb": "https://some.test.thumb_3",
+              "title": "some test title_3",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "https://some.test.thumb_4",
+            "nodeType": "class",
+            "props": Object {
+              "thumb": "https://some.test.thumb_4",
+              "title": "some test title_4",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
