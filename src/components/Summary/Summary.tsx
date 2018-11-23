@@ -3,7 +3,7 @@ import IPicture from '../Cards';
 import { PicGrid } from '../PicGrid';
 import Button from '@material-ui/core/Button';
 
-interface IProps {
+export interface Props {
   pictures: IPicture[],
   restart: () => void,
 }
@@ -13,7 +13,7 @@ const KEYS = {
   SKIPPED: 'skipped',
 }
 
-const Summary = ({ pictures, restart }: IProps) => {
+export const Summary = ({ pictures, restart }: Props) => {
   const getPics = (key: string, value: boolean) => {
     return pictures.filter((pic: IPicture) => pic[key] === value)
   }
@@ -37,5 +37,3 @@ const Summary = ({ pictures, restart }: IProps) => {
     </div>
   )
 }
-
-export default Summary;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ImageCard from '../ImageCard';
-import Summary from '../Summary';
+import { Summary } from '../Summary';
 import { fetchPictures } from '../../utils/fetchPictures';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
